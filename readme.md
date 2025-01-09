@@ -3,7 +3,7 @@
 
 ## Overview
 
-MALE is a Python-based project that implements the Multi-objective Anytime Lexicographic Enumeration algorithms. The project aims to solve multi-objective optimization problems by using lexicographic enumeration methods in a flexible and efficient manner.
+MALE is a Python-based project that implements the Multi-objective Anytime Lexicographic Enumeration algorithms. The project aims to solve multi-objective combinatorial optimization problems by proposing two new algorithms **FI** (Fix, Improved) and **FWI** (Fix, Worsen, Improve), which can efficiently lexicographically enumerate part of the Pareto front.
 
 ## Requirements
 
