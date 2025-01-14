@@ -7,7 +7,7 @@ ALEM is a Python-based project that implements Multi-objective Anytime Lexicogra
 
 ## Requirements
 
-To install the required dependencies for MALE, you can use the provided `requirements.txt` file. This file contains all the necessary Python packages to get started.
+To install the required dependencies for ALEM, you can use the provided `requirements.txt` file. This file contains all the necessary Python packages to get started.
 
 ### Installing Dependencies
 
@@ -43,7 +43,7 @@ To install the required dependencies for MALE, you can use the provided `require
 
 ## Running the Experiments
 
-The `runner.py` script is used to run experiments for the MALE project. You can execute it through the terminal by passing various command-line options to specify the desired enumeration method, problem type, and other configurations.
+The `runner.py` script is used to run experiments for the ALEM project. You can execute it through the terminal by passing various command-line options to specify the desired enumeration method, problem type, and other configurations.
 
 ### Usage
 
