@@ -1,5 +1,5 @@
 
-# ALEM (Anytime Lexicographic Enumeration for Multi objective problem)
+# ALEM (Anytime Lexicographic Enumeration for Multi objective problems)
 
 ## Overview
 
