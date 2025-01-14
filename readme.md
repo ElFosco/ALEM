@@ -1,9 +1,9 @@
 
-# MALE (Multi objective Anytime Lexicographic Enumeration)
+# ALEM (Anytime Lexicographic Enumeration for Multi objective problem)
 
 ## Overview
 
-MALE is a Python-based project that implements Multi-objective Anytime Lexicographic Enumeration algorithms. The project aims to solve multi-objective combinatorial optimization problems by proposing two new algorithms: **FI** (Fix, Improved) and **FWI** (Fix, Worsen, Improve), which can efficiently lexicographically enumerate part of the Pareto front.
+ALEM is a Python-based project that implements Multi-objective Anytime Lexicographic Enumeration algorithms. The project aims to solve multi-objective combinatorial optimization problems by proposing two new algorithms: **FI** (Fix, Improved) and **FWI** (Fix, Worsen, Improve), which can efficiently lexicographically enumerate part of the Pareto front.
 
 ## Requirements
 
