@@ -56,12 +56,15 @@ python runner.py -m <method> -f <data_folder> -p <problem_type> -k <num_solution
 ### Explanation of the Options
 
 - **-m**: Specifies the enumeration method to use. You can choose from the following methods (lower case):
-  - **FI** : proposed method.
-  - **FWI** : proposed method.
-  - **Disjunction**: Sylva, J., & Crema, A. (2004). *A method for finding the set of non-dominated vectors for multiple objective integer linear programs*. European Journal of Operational Research, 158(1), 46-55. [DOI: 10.1016/S0377-2217(03)00255-8](https://www.sciencedirect.com/science/article/pii/S0377221703002558)
-  - **Rectangle**: Kirlik, G., & Sayın, S. (2014). *A new algorithm for generating all nondominated solutions of multiobjective discrete optimization problems*. European Journal of Operational Research, 232(3), 479-488. [DOI: 10.1016/j.ejor.2013.08.001](https://www.sciencedirect.com/science/article/pii/S0377221713006474)
-  - **Ozlen+**: Özlen, M., Burton, B. A., & MacRae, C. A. G. (2014). *Multi-Objective Integer Programming: An Improved Recursive Algorithm*. Journal of Optimization Theory and Applications, 160(2), 470-482. [DOI: 10.1007/s10957-013-0364-y](https://doi.org/10.1007/s10957-013-0364-y)
-  - **Saugmecon**: Zhang, W., & Reimann, M. (2014). *A simple augmented ε-constraint method for multi-objective mathematical integer programming problems*. European Journal of Operational Research, 234(1), 15-24. [DOI: 10.1016/j.ejor.2013.09.001](https://www.sciencedirect.com/science/article/pii/S0377221713007376)
+  - **fi** : proposed method.
+  - **fwi** : proposed method.
+  - **disjunction**: Sylva, J., & Crema, A. (2004). *A method for finding the set of non-dominated vectors for multiple objective integer linear programs*. European Journal of Operational Research, 158(1), 46-55. [DOI: 10.1016/S0377-2217(03)00255-8](https://www.sciencedirect.com/science/article/pii/S0377221703002558)
+  - **rectangle**: Kirlik, G., & Sayın, S. (2014). *A new algorithm for generating all nondominated solutions of multiobjective discrete optimization problems*. European Journal of Operational Research, 232(3), 479-488. [DOI: 10.1016/j.ejor.2013.08.001](https://www.sciencedirect.com/science/article/pii/S0377221713006474)
+  - **ozlen+**: Özlen, M., Burton, B. A., & MacRae, C. A. G. (2014). *Multi-Objective Integer Programming: An Improved Recursive Algorithm*. Journal of Optimization Theory and Applications, 160(2), 470-482. [DOI: 10.1007/s10957-013-0364-y](https://doi.org/10.1007/s10957-013-0364-y)
+  - **saugmecon**: Zhang, W., & Reimann, M. (2014). *A simple augmented ε-constraint method for multi-objective mathematical integer programming problems*. European Journal of Operational Research, 234(1), 15-24. [DOI: 10.1016/j.ejor.2013.09.001](https://www.sciencedirect.com/science/article/pii/S0377221713007376)
+   - **tamby**: Tamby, S., & Vanderpooten, D. (2021). *Enumeration of the nondominated set of multiobjective discrete optimization problems*. INFORMS Journal on Computing, 33(1), 72-85. [DOI: 10.1287/ijoc.2020.0953](https://doi.org/10.1287/ijoc.2020.0953)
+   - **tamby_lex**: Lexicographic variant of tamby
+   - **dpa**: Dächert, K., Fleuren, T., & Klamroth, K. (2024). *A simple, efficient and versatile objective space algorithm for multiobjective integer programming*. Mathematical Methods of Operations Research, 100(1), 351–384. [DOI: 10.1007/s00186-023-00841-0](https://doi.org/10.1007/s00186-023-00841-0)
 
 - **-f**: Specifies the folder where the data for each problem type is located. For example, for facility location, you would type:
   ```bash
