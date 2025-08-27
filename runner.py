@@ -13,7 +13,7 @@ from utility.utility import create_folders
 
 parser = argparse.ArgumentParser(description='Runner Anytime Enumeration')
 
-parser.add_argument('-m', '--method', type=str, choices=['fwi','disjunction','rectangle', 'ozlen+', 'saugmecon', 'fi'],
+parser.add_argument('-m', '--method', type=str, choices=['fwi','disjunction','rectangle', 'ozlen+', 'saugmecon', 'fi', 'tamby', 'tamby_lex', 'dpa'],
                     help='method', required=True)
 parser.add_argument('-f', '--folder', type=str, help='folder input', required=True)
 parser.add_argument('-p', '--problem', type=str, choices=['land', 'knap', 'ap','facility'],
@@ -44,32 +44,40 @@ if args.problem == 'land':
         file_thr = os.path.join(folder_thr, f'data_thr_{number}.csv')
         grid = Grid(path_grid=file_grid, path_threshold=file_thr)
         for obj in objective_list:
-            if obj <= 4:
-                print(f'Start enumerating for {obj} objectives')
-                maker = LandConModel(grid=grid, obj=obj)
-                if args.method == 'fwi':
-                    print('Run fwi')
-                    df = tester.test_fwi(maker)
-                elif args.method == 'disjunction':
-                    print('Run disjunction')
-                    df = tester.test_disjunction(maker)
-                elif args.method == 'rectangle':
-                    print('Run rectangle')
-                    df = tester.test_rectangle(maker)
-                elif args.method == 'ozlen+':
-                    print('Run ozlen+')
-                    df = tester.test_ozlen(maker)
-                elif args.method == 'saugmecon':
-                    print('Run saugmecon')
-                    df = tester.test_saugmecon(maker)
-                elif args.method == 'fi':
-                    print('Run fi')
-                    df = tester.test_fi(maker)
-                folder_results = os.path.join(result_location, f'{obj}K')
-                folder_results = os.path.join(folder_results, args.method)
-                create_folders(folder_results)
-                csv_file_name = os.path.join(folder_results, f'{number}.csv')
-                df.to_csv(csv_file_name)
+            print(f'Start enumerating for {obj} objectives')
+            maker = LandConModel(grid=grid, obj=obj)
+            if args.method == 'fwi':
+                print('Run fwi')
+                df = tester.test_fwi(maker)
+            elif args.method == 'disjunction':
+                print('Run disjunction')
+                df = tester.test_disjunction(maker)
+            elif args.method == 'rectangle':
+                print('Run rectangle')
+                df = tester.test_rectangle(maker)
+            elif args.method == 'ozlen+':
+                print('Run ozlen+')
+                df = tester.test_ozlen(maker)
+            elif args.method == 'saugmecon':
+                print('Run saugmecon')
+                df = tester.test_saugmecon(maker)
+            elif args.method == 'fi':
+                print('Run fi')
+                df = tester.test_fi(maker)
+            elif args.method == 'dpa':
+                print('Run fi')
+                df = tester.test_dpa(maker)
+            elif args.method == 'tamby':
+                print('Run fi')
+                df = tester.test_tamby(maker)
+            elif args.method == 'tamby_lex':
+                print('Run fi')
+                df = tester.test_tamby_lex(maker)
+            folder_results = os.path.join(result_location, f'{obj}K')
+            folder_results = os.path.join(folder_results, args.method)
+            create_folders(folder_results)
+            csv_file_name = os.path.join(folder_results, f'{number}.csv')
+            df.to_csv(csv_file_name)
 elif args.problem == 'knap':
     data_type = os.path.basename(folder)
     result_location = os.path.join(os.getcwd(), f'results/{solver}/knapsack/{data_type}')
@@ -103,6 +111,15 @@ elif args.problem == 'knap':
                     elif args.method == 'fi':
                         print('Run fi')
                         df = tester.test_fi(maker)
+                    elif args.method == 'dpa':
+                        print('Run fi')
+                        df = tester.test_dpa(maker)
+                    elif args.method == 'tamby':
+                        print('Run fi')
+                        df = tester.test_tamby(maker)
+                    elif args.method == 'tamby_lex':
+                        print('Run fi')
+                        df = tester.test_tamby_lex(maker)
                     folder_results = os.path.join(result_location, subfolder)
                     folder_results = os.path.join(folder_results, args.method)
                     create_folders(folder_results)
@@ -141,6 +158,15 @@ elif args.problem == 'ap':
                     elif args.method == 'fi':
                         print('Run fi')
                         df = tester.test_fi(maker)
+                    elif args.method == 'dpa':
+                        print('Run fi')
+                        df = tester.test_dpa(maker)
+                    elif args.method == 'tamby':
+                        print('Run fi')
+                        df = tester.test_tamby(maker)
+                    elif args.method == 'tamby_lex':
+                        print('Run fi')
+                        df = tester.test_tamby_lex(maker)
                     folder_results = os.path.join(result_location, subfolder)
                     folder_results = os.path.join(folder_results, args.method)
                     create_folders(folder_results)
@@ -182,6 +208,15 @@ elif args.problem == 'facility':
                     elif args.method == 'fi':
                         print('Run fi')
                         df = tester.test_fi(maker)
+                    elif args.method == 'dpa':
+                        print('Run fi')
+                        df = tester.test_dpa(maker)
+                    elif args.method == 'tamby':
+                        print('Run fi')
+                        df = tester.test_tamby(maker)
+                    elif args.method == 'tamby_lex':
+                        print('Run fi')
+                        df = tester.test_tamby_lex(maker)
                     folder_results = os.path.join(result_location, subfolder)
                     folder_results = os.path.join(folder_results, args.method)
                     create_folders(folder_results)

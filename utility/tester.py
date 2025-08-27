@@ -1,13 +1,14 @@
 import pandas as pd
 
-
+from enumerating_methods.DPA import DPA
 from enumerating_methods.disjunction import Disjunctive
 from enumerating_methods.fi import FI
 from enumerating_methods.fwi import FWI
 from enumerating_methods.ozlen_imp import OzlenImp
 from enumerating_methods.rectangle import Rectangle
 from enumerating_methods.saugmecon import Saugmecon
-
+from enumerating_methods.tamby import Tamby
+from enumerating_methods.tamby_lex import TambyLex
 
 
 class Tester():
@@ -91,46 +92,37 @@ class Tester():
                                                   'time_solve_sat', 'time_solve_unsat'])
         return df_fi
 
-    def test_fi_plus(self, maker):
-        model, variables, objectives_names, default_values = maker.make_model()
-        method = FI(model=model, variables=variables, top_k=self.top_k,
-                    objectives_names=objectives_names, timeout=self.timeout,
-                    default_values = default_values, flag_w = True,solver=self.solver)
-        statistics = method.start_fi()
-        df_fi_plus = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
-                                                  'solve_calls_sat', 'solve_calls_unsat',
-                                                  'time_solve_sat', 'time_solve_unsat'])
-        return df_fi_plus
 
-    def test_sfi(self, maker):
+    def test_tamby(self, maker):
         model, variables, objectives_names, default_values = maker.make_model()
-        method = SFWIMethodORTools(model=model, variables=variables, top_k=self.top_k,
-                                   objectives_names = objectives_names, timeout=self.timeout,
-                                   default_values = default_values, flag_w=False, flag_interval= False)
-        statistics = method.start_sfwi()
-        df_fi = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
-                                                  'solve_calls_sat', 'solve_calls_unsat',
-                                                  'time_solve_sat', 'time_solve_unsat'])
-        return df_fi
+        method = Tamby(model=model, variables=variables, top_k=self.top_k,
+                       objectives_names=objectives_names, timeout=self.timeout,
+                       default_values = default_values)
+        statistics = method.start_tamby()
+        df_tamby = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
+                                                     'solve_calls_sat', 'solve_calls_unsat',
+                                                     'time_solve_sat', 'time_solve_unsat'])
+        return df_tamby
 
-    def test_sfi_plus(self, maker):
+    def test_tamby_lex(self, maker):
         model, variables, objectives_names, default_values = maker.make_model()
-        method = SFWIMethodORTools(model=model, variables=variables, top_k=self.top_k,
-                                   objectives_names=objectives_names, timeout=self.timeout,
-                                   default_values = default_values, flag_w = True, flag_interval= False)
-        statistics = method.start_sfwi()
-        df_sfi_plus = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
-                                                  'solve_calls_sat', 'solve_calls_unsat',
-                                                  'time_solve_sat', 'time_solve_unsat'])
-        return df_sfi_plus
+        method = TambyLex(model=model, variables=variables, top_k=self.top_k,
+                       objectives_names=objectives_names, timeout=self.timeout,
+                       default_values = default_values)
+        statistics = method.start_tamby()
+        df_tamby_lex = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
+                                                         'solve_calls_sat', 'solve_calls_unsat',
+                                                         'time_solve_sat', 'time_solve_unsat'])
+        return df_tamby_lex
 
-    def test_sfwi(self, maker):
+
+    def test_dpa(self, maker):
         model, variables, objectives_names, default_values = maker.make_model()
-        method = SFWIMethodORTools(model=model, variables=variables, top_k=self.top_k,
-                                   objectives_names=objectives_names, timeout=self.timeout,
-                                   default_values = default_values)
-        statistics = method.start_sfwi()
-        df_fi = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
-                                                  'solve_calls_sat', 'solve_calls_unsat',
-                                                  'time_solve_sat', 'time_solve_unsat'])
-        return df_fi
+        method = DPA(model=model, variables=variables, top_k=self.top_k,
+                     objectives_names=objectives_names, timeout=self.timeout,
+                     default_values = default_values)
+        statistics = method.start_dpa()
+        df_dpa = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
+                                                   'solve_calls_sat', 'solve_calls_unsat',
+                                                   'time_solve_sat', 'time_solve_unsat'])
+        return df_dpa
