@@ -189,7 +189,8 @@ def solve_sat_problem(cache,time_limit,new_constraints):
     return False
 
 
-def general_solve(cache, batches_weights, objectives, time_limit, new_constraints, solver):
+def general_solve(cache, batches_weights, objectives, time_limit, new_constraints,
+                  solver,hint=None):
 
     if solver=='ortools_assum':
         model = cache
@@ -217,6 +218,10 @@ def general_solve(cache, batches_weights, objectives, time_limit, new_constraint
         constraints = []
         model_ortools = Model()
         model_ortools = SolverLookup.get('ortools', model_ortools)
+        # # removes of LNS OLD
+        # model_ortools.ort_solver.parameters.use_rins_lns = False
+        # model_ortools.ort_solver.parameters.use_feasibility_pump = False
+        # model_ortools.ort_solver.parameters.use_lb_relax_lns = False
         model_ortools.ort_solver.parameters.log_search_progress = False
         for c in cache:
             model_ortools._post_constraint(c)
@@ -248,6 +253,8 @@ def general_solve(cache, batches_weights, objectives, time_limit, new_constraint
             return False
     if solver=='gurobi_inc':
         model_gurobi = cache
+        if hint is not None:
+            model_gurobi.solution_hint(objectives,hint)
         for cons in new_constraints:
             model_gurobi.add_temp(cons)
         model_gurobi.lex_solve(objectives)
@@ -345,3 +352,7 @@ def filter_weakly_dominated(sols,weights):
 def distribute_numbers(x):
     base, remainder = divmod(15, x)
     return [base] * (x - remainder) + [base + 1] * remainder
+
+
+def remove_sublists(lst_of_lsts, to_remove):
+    return [lst for lst in lst_of_lsts if lst not in to_remove]

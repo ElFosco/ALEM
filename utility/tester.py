@@ -109,7 +109,7 @@ class Tester():
         method = TambyLex(model=model, variables=variables, top_k=self.top_k,
                        objectives_names=objectives_names, timeout=self.timeout,
                        default_values = default_values)
-        statistics = method.start_tamby()
+        statistics = method.start_tamby_lex()
         df_tamby_lex = pd.DataFrame(statistics, columns=['solution', 'time', 'obj value',
                                                          'solve_calls_sat', 'solve_calls_unsat',
                                                          'time_solve_sat', 'time_solve_unsat'])
